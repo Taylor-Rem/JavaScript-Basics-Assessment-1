@@ -189,17 +189,22 @@ for (let i = 0; i < combinedTons.length; i++) {
 
 // this problem is similar to the last. I used the same solving methods.
 let combinedPounds = [(fujiPounds = []), (galaPounds = []), (pinkPounds = [])];
-
+let totalApplePounds = [
+  (totalFujiPounds = 0),
+  (totalGalaPounds = 0),
+  (totalPinkPounds = 0),
+];
 // looping through combinedPounds array
 for (let i = 0; i < combinedPounds.length; i++) {
   // looping through values in array
   for (let j = 0; j < 7; j++) {
     // calculates tons to pounds
     combinedPounds[i][j] = combinedTons[i][j] * 2000;
+    // combines pounds of each apple type
+    totalApplePounds[i] += combinedPounds[i][j];
   }
-  //   logging results
-  console.log(combinedPounds[i]);
 }
+console.log(totalApplePounds);
 // again we could "console.log(fujiPounds, galaPounds, pinkPounds)" here if we wanted
 
 // PROBLEM 6
