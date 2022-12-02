@@ -151,7 +151,7 @@ console.log(days);
 // CODE HERE
 
 // I decided to declare the "tons" variables inside of this array to allow flexibility and because I don't really see a big downside to doing so. putting these variables inside an array allows them to be looped through and they can still be called later.
-let combinedTons = [(fujiTons = []), (galaTons = []), (pinkTons = [])];
+let combinedTons = [[], [], []];
 
 // originally the above code looked like this:
 // let fujiTons = [] let galaTons = [] let pinkTons = []
@@ -188,12 +188,8 @@ for (let i = 0; i < combinedTons.length; i++) {
 // CODE HERE
 
 // this problem is similar to the last. I used the same solving methods.
-let combinedPounds = [(fujiPounds = []), (galaPounds = []), (pinkPounds = [])];
-let totalApplePounds = [
-  (totalFujiPounds = 0),
-  (totalGalaPounds = 0),
-  (totalPinkPounds = 0),
-];
+let combinedPounds = [[], [], []];
+let totalApplePounds = [0, 0, 0];
 // looping through combinedPounds array
 for (let i = 0; i < combinedPounds.length; i++) {
   // looping through values in array
@@ -228,7 +224,7 @@ console.log(totalApplePounds);
 // i'm starting to feel like a broken record at this point
 
 // combined profits and prices to allow looping
-let combinedProfit = [(fujiProfit = 0), (galaProfit = 0), (pinkProfit = 0)];
+let combinedProfit = [0, 0, 0];
 let combinedPrices = [fujiPrice, galaPrice, pinkPrice];
 
 // looping through arrays
