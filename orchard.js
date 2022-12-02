@@ -27,15 +27,13 @@
     in cents. 
 */
 
-const fujiAcres = [2, 3, 3, 2, 2, 2, 1]
-const galaAcres = [5, 2, 4, 3, 6, 2, 4]
-const pinkAcres = [1, 5, 4, 2, 1, 5, 4]
+const fujiAcres = [2, 3, 3, 2, 2, 2, 1];
+const galaAcres = [5, 2, 4, 3, 6, 2, 4];
+const pinkAcres = [1, 5, 4, 2, 1, 5, 4];
 
-const fujiPrice = .89 
-const galaPrice = .64
-const pinkPrice = .55
-
-
+const fujiPrice = 0.89;
+const galaPrice = 0.64;
+const pinkPrice = 0.55;
 
 // PROBLEM 1
 
@@ -51,9 +49,21 @@ const pinkPrice = .55
 
 // CODE HERE
 
+// declaring total acres so it can be used later
+let totalAcres = 0;
 
+// combining the arrays together allows for different types of trees to easily be added to the totalAcres sum. Also using slice method allows for the original values to be easily modified.
+let combinedAcres = [fujiAcres.slice(), galaAcres.slice(), pinkAcres.slice()];
 
-
+// looping through all arrays
+for (let i = 0; i < combinedAcres.length; i++) {
+  // looping through numbers in each array. personally decided to use 7 instead of fujiAcres.length
+  for (let j = 0; j < 7; j++) {
+    // a simple equation which easily retrieves the sum for all numbers contained within combinedAcres. += allows for each loop to continually add on top of itself.
+    totalAcres += combinedAcres[i][j];
+  }
+}
+console.log(totalAcres);
 
 // PROBLEM 2
 
@@ -69,9 +79,9 @@ const pinkPrice = .55
 
 // CODE HERE
 
-
-
-
+// I considered dividing by fujiAcres.length but figured we won't change the number of days in a week any time soon
+let averageDailyAcres = totalAcres / 7;
+console.log(averageDailyAcres);
 
 // PROBLEM 3
 
@@ -102,12 +112,17 @@ const pinkPrice = .55
 
 */
 
-let acresLeft = 174 
-let days = 0
+let acresLeft = 174;
+let days = 0;
 
 // CODE HERE
 
-
+while (acresLeft > 0) {
+  // if the average ever changes it will be accounted for. Also -= will continue to subtract from acresLeft total.
+  acresLeft -= averageDailyAcres;
+  days++;
+}
+console.log(days);
 
 // PROBLEM 4
 
@@ -135,14 +150,24 @@ let days = 0
 
 // CODE HERE
 
-// let fujiTons =
-// let galaTons =
-// let pinkTons =
+// I decided to declare the "tons" variables inside of this array to allow flexibility and because I don't really see a big downside to doing so. putting these variables inside an array allows them to be looped through and they can still be called later.
+let combinedTons = [(fujiTons = []), (galaTons = []), (pinkTons = [])];
 
+// originally the above code looked like this:
+// let fujiTons = [] let galaTons = [] let pinkTons = []
+// let combinedTons = [fujiTons.splice(), galaTons.splice(), pinkTons.splice(),]
 
-
-
-
+// looping through the combinedTons
+for (let i = 0; i < combinedTons.length; i++) {
+  // looping through each value in combined tons array
+  for (let j = 0; j < 7; j++) {
+    // calculates the tons per acre
+    combinedTons[i][j] = combinedAcres[i][j] * 6.5;
+  }
+  //   logs each array
+  console.log(combinedTons[i]);
+}
+// we could also "console.log(fujiTons, galaTons, pinkTons)" here if we wanted to.
 
 // PROBLEM 5
 
@@ -160,16 +185,22 @@ let days = 0
     Hint: there are 2000 pounds in a ton.
 */
 
-// CODE HERE 
+// CODE HERE
 
-// let fujiPounds =
-// let galaPounds =
-// let pinkPounds =
+// this problem is similar to the last. I used the same solving methods.
+let combinedPounds = [(fujiPounds = []), (galaPounds = []), (pinkPounds = [])];
 
-
-
-
-
+// looping through combinedPounds array
+for (let i = 0; i < combinedPounds.length; i++) {
+  // looping through values in array
+  for (let j = 0; j < 7; j++) {
+    // calculates tons to pounds
+    combinedPounds[i][j] = combinedTons[i][j] * 2000;
+  }
+  //   logging results
+  console.log(combinedPounds[i]);
+}
+// again we could "console.log(fujiPounds, galaPounds, pinkPounds)" here if we wanted
 
 // PROBLEM 6
 
@@ -189,14 +220,22 @@ let days = 0
 
 // CODE HERE
 
-// let fujiProfit =
-// let galaProfit =
-// let pinkProfit =
+// i'm starting to feel like a broken record at this point
 
+// combined profits and prices to allow looping
+let combinedProfit = [(fujiProfit = 0), (galaProfit = 0), (pinkProfit = 0)];
+let combinedPrices = [fujiPrice, galaPrice, pinkPrice];
 
-
-
-
+// looping through arrays
+for (let i = 0; i < combinedProfit.length; i++) {
+  // looping through values in arrays
+  for (let j = 0; j < 7; j++) {
+    // calculating profit per apple
+    combinedProfit[i] += combinedPounds[i][j] * combinedPrices[i];
+  }
+}
+//   logging results
+console.log(combinedProfit);
 
 // PROBLEM 7
 
@@ -209,3 +248,14 @@ let days = 0
 */
 
 // CODE HERE
+
+// declaring totalProfit
+let totalProfit = 0;
+
+// looping through combinedProfit
+for (let i = 0; i < combinedProfit.length; i++) {
+  // adding sum of combinedProfit to totalProfit
+  totalProfit += combinedProfit[i];
+}
+// logging results
+console.log(totalProfit);
