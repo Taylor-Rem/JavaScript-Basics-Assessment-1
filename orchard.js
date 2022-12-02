@@ -150,7 +150,7 @@ console.log(days);
 
 // CODE HERE
 
-// I decided to declare the "tons" variables inside of this array to allow flexibility and because I don't really see a big downside to doing so. putting these variables inside an array allows them to be looped through and they can still be called later.
+// putting these variables inside an array allows them to be looped through and they can still be called later.
 let combinedTons = [[], [], []];
 
 // originally the above code looked like this:
@@ -167,7 +167,6 @@ for (let i = 0; i < combinedTons.length; i++) {
   //   logs each array
   console.log(combinedTons[i]);
 }
-// we could also "console.log(fujiTons, galaTons, pinkTons)" here if we wanted to.
 
 // PROBLEM 5
 
